@@ -16,6 +16,17 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <repositories>
+        <repository>
+            <id>spigot-repo</id>
+            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+        </repository>
+        <repository>
+            <id>bungeecord-repo</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </repository>
+    </repositories>
+
     <dependencies>
         <dependency>
             <groupId>org.spigotmc</groupId>
@@ -28,20 +39,6 @@
             <artifactId>bungeecord-api</artifactId>
             <version>1.12-SNAPSHOT</version>
             <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>me.consolas</groupId>
-            <artifactId>AAC</artifactId>
-            <version>3.3.4</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/dependencies/AAC.jar</systemPath>
-        </dependency>
-        <dependency>
-            <groupId>de.photon</groupId>
-            <artifactId>AACAdditionPro</artifactId>
-            <version>3.4.2</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/dependencies/AAC+.jar</systemPath>
         </dependency>
     </dependencies>
 
