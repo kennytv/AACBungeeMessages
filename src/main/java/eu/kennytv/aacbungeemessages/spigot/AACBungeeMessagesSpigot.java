@@ -4,6 +4,7 @@ import com.google.common.collect.Iterables;
 import com.google.common.io.ByteArrayDataOutput;
 import com.google.common.io.ByteStreams;
 import eu.kennytv.aacbungeemessages.spigot.command.AACNotifyCommand;
+import eu.kennytv.aacbungeemessages.spigot.listener.SpigotMessagingListener;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -19,8 +20,9 @@ public final class AACBungeeMessagesSpigot extends JavaPlugin {
         if (!getDescription().getAuthors().contains("KennyTV"))
             getServer().getPluginManager().disablePlugin(this);
 
-        getCommand("aacnotifyspigot").setExecutor(new AACNotifyCommand(this));
+        getCommand("aacnotify").setExecutor(new AACNotifyCommand(this));
         getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
+        getServer().getMessenger().registerIncomingPluginChannel(this, "Return", new SpigotMessagingListener(this));
 
         saveDefaultConfig();
         prefix = ChatColor.translateAlternateColorCodes('&',

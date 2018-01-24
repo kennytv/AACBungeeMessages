@@ -1,8 +1,6 @@
 package eu.kennytv.aacbungeemessages.bungee.listener;
 
 import eu.kennytv.aacbungeemessages.bungee.AACBungeeMessages;
-import net.md_5.bungee.api.chat.BaseComponent;
-import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.event.PluginMessageEvent;
 import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.event.EventHandler;
@@ -40,8 +38,6 @@ public final class MessagingListener implements Listener {
             e.printStackTrace();
         }
 
-        final BaseComponent[] message = TextComponent.fromLegacyText(input);
-        plugin.getProxy().getPlayers().stream().filter(p -> p.hasPermission("aac.notify"))
-                .forEach(p -> p.sendMessage(message));
+        plugin.sendToBukkit(input);
     }
 }
