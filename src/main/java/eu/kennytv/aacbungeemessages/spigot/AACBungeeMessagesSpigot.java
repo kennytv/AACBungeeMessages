@@ -5,14 +5,9 @@ import com.google.common.io.ByteArrayDataOutput;
 import com.google.common.io.ByteStreams;
 import eu.kennytv.aacbungeemessages.spigot.command.AACNotifyCommand;
 import eu.kennytv.aacbungeemessages.spigot.listener.SpigotMessagingListener;
-import org.bukkit.ChatColor;
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.io.File;
-
 public final class AACBungeeMessagesSpigot extends JavaPlugin {
-    private String prefix;
 
     @Override
     public void onEnable() {
@@ -23,10 +18,6 @@ public final class AACBungeeMessagesSpigot extends JavaPlugin {
         getCommand("aacnotify").setExecutor(new AACNotifyCommand(this));
         getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
         getServer().getMessenger().registerIncomingPluginChannel(this, "Return", new SpigotMessagingListener(this));
-
-        saveDefaultConfig();
-        prefix = ChatColor.translateAlternateColorCodes('&',
-                YamlConfiguration.loadConfiguration(new File(getDataFolder(), "config.yml")).getString("prefix"));
     }
 
     public void sendPluginMessage(final String message) {
@@ -34,9 +25,5 @@ public final class AACBungeeMessagesSpigot extends JavaPlugin {
         out.writeUTF("AACBungeeMessages:Notification");
         out.writeUTF(message);
         Iterables.getFirst(getServer().getOnlinePlayers(), null).sendPluginMessage(this, "BungeeCord", out.toByteArray());
-    }
-
-    public String getPrefix() {
-        return prefix;
     }
 }

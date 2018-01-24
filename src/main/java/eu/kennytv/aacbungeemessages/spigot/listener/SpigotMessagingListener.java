@@ -23,7 +23,7 @@ public final class SpigotMessagingListener implements PluginMessageListener {
             final String channel = in.readUTF();
             if (!channel.equals("AACBungeeMessages:Notification")) return;
 
-            final String message = plugin.getPrefix() + in.readUTF();
+            final String message = in.readUTF();
             Bukkit.getOnlinePlayers().stream().filter(p -> p.hasPermission("aac.notify"))
                     .forEach(p -> p.sendMessage(message));
         } catch (final IOException e) {

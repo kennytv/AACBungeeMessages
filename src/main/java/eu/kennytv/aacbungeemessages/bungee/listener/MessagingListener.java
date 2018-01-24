@@ -5,9 +5,7 @@ import net.md_5.bungee.api.event.PluginMessageEvent;
 import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.event.EventHandler;
 
-import java.io.ByteArrayInputStream;
-import java.io.DataInputStream;
-import java.io.IOException;
+import java.io.*;
 
 public final class MessagingListener implements Listener {
     private final AACBungeeMessages plugin;
@@ -38,6 +36,19 @@ public final class MessagingListener implements Listener {
             e.printStackTrace();
         }
 
-        plugin.sendToBukkit(input);
+        sendToBukkit(plugin.getPrefix() + input);
+    }
+
+    private void sendToBukkit(final String message) {
+        final ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        final DataOutputStream out = new DataOutputStream(stream);
+        try {
+            out.writeUTF("AACBungeeMessages:Notification");
+            out.writeUTF(message);
+        } catch (final IOException e) {
+            e.printStackTrace();
+        }
+
+        plugin.getProxy().getServers().values().forEach(server -> server.sendData("Return", stream.toByteArray()));
     }
 }
