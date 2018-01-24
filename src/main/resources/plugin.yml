@@ -1,0 +1,8 @@
+name: ${project.name}
+version: ${project.version}
+main: eu.kennytv.aacbungeemessages.spigot.AACBungeeMessagesSpigot
+author: KennyTV
+
+commands:
+  aacnotify:
+    description: Sends a AAC notify message to the whole proxy server.
