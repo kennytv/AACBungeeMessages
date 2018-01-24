@@ -17,7 +17,7 @@ public final class AACBungeeMessagesSpigot extends JavaPlugin {
 
         getCommand("aacnotify").setExecutor(new AACNotifyCommand(this));
         getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
-        getServer().getMessenger().registerIncomingPluginChannel(this, "Return", new SpigotMessagingListener(this));
+        getServer().getMessenger().registerIncomingPluginChannel(this, "Return", new SpigotMessagingListener());
     }
 
     public void sendPluginMessage(final String message) {

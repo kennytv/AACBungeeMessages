@@ -5,4 +5,4 @@ author: KennyTV
 
 commands:
   aacnotify:
-    description: Sends a AAC notify message to the whole proxy server.
+    description: Sends an AAC notify message to other Bukkit/Spigot servers with this plugin.

@@ -1,6 +1,5 @@
 package eu.kennytv.aacbungeemessages.spigot.listener;
 
-import eu.kennytv.aacbungeemessages.spigot.AACBungeeMessagesSpigot;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.messaging.PluginMessageListener;
@@ -10,11 +9,6 @@ import java.io.DataInputStream;
 import java.io.IOException;
 
 public final class SpigotMessagingListener implements PluginMessageListener {
-    private final AACBungeeMessagesSpigot plugin;
-
-    public SpigotMessagingListener(final AACBungeeMessagesSpigot plugin) {
-        this.plugin = plugin;
-    }
 
     @Override
     public void onPluginMessageReceived(final String s, final Player player, final byte[] bytes) {
