@@ -20,17 +20,7 @@ public final class AACNotifyCommand implements CommandExecutor {
         }
         if (args.length == 0) return false;
 
-        plugin.sendPluginMessage(getCompleteMessage(args));
+        plugin.sendPluginMessage(String.join(" ", args));
         return true;
-    }
-
-    private String getCompleteMessage(final String[] args) {
-        String message = "";
-        for (final String arg : args) {
-            if (arg.isEmpty()) continue;
-            message += arg + " ";
-        }
-
-        return message;
     }
 }
