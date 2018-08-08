@@ -4,6 +4,7 @@ import eu.kennytv.aacbungeemessages.bungee.listener.MessagingListener;
 import net.md_5.bungee.api.plugin.Plugin;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 
 public final class AACBungeeMessages extends Plugin {
@@ -12,8 +13,6 @@ public final class AACBungeeMessages extends Plugin {
     @Override
     public void onEnable() {
         getLogger().info("Plugin by KennyTV");
-        if (!getDescription().getAuthor().equals("KennyTV")) return;
-
         registerConfig();
         getProxy().getPluginManager().registerListener(this, new MessagingListener(this));
     }
@@ -34,8 +33,8 @@ public final class AACBungeeMessages extends Plugin {
         try {
             prefix = net.md_5.bungee.api.ChatColor.translateAlternateColorCodes('&', net.md_5.bungee.config.YamlConfiguration
                     .getProvider(net.md_5.bungee.config.YamlConfiguration.class)
-                    .load(new InputStreamReader(new FileInputStream(file), "UTF8")).getString("prefix"));
-        } catch (final FileNotFoundException | UnsupportedEncodingException e) {
+                    .load(new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_8)).getString("prefix"));
+        } catch (final FileNotFoundException e) {
             e.printStackTrace();
         }
     }
